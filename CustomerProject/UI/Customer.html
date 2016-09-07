@@ -1,0 +1,44 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <script src="../Scripts/angular.js"></script>
+    <script src="../BusinessLogic/Customer.js"></script>
+    <script src="../Common/Utility.js"></script>
+    <script src="../BusinessLogic/Binder.js"></script>
+    
+    <script src="../Provider/Factory.js"></script>
+
+    <script>
+        var App = angular.module("myApp", []);
+        var controller = App.controller("Binder", Binder);
+        App.service("_Utility", Utility);
+        App.factory("_Factory", FactoryCustomer);
+    </script>
+</head>
+<body ng-app="myApp">
+<div id="CustomerUI" ng-controller="Binder">
+    Customer Code:- <input ng-model="Model.CustomerCode" type="text" name="name" value="hi" />
+    Customer Name:- <input ng-model="Model.CustomerName" type="text" name="name" value="" /><br />
+    Customer Type:-<select ng-model="Type">
+    <option value="Customer">Customer</option>
+    <option value="CustomerGold">CustomerGold</option></select>
+    <input type="button" name="name" value="Validate" ng-click="Model.Validate()" /><br />
+    <input type="button" ng-click="Add()" />
+    <input type="button" value="Savetoserver" ng-click="SaveToServer()">
+    <table>
+        <tr>
+            <td>Name</td>
+            <td>Code</td>
+        </tr>
+        <tr ng-repeat="Cust in Models">
+            <td>{{Cust.CustomerName}}</td>
+            <td>{{Cust.CustomerCode}}</td>
+        </tr>
+    </table>
+    {{Utility.MakeUpperCase(Model.CustomerCode)}}<br />
+    {{Model.CustomerName}}</div>
+
+</body>
+
+</html>
