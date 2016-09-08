@@ -1,0 +1,25 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <script src="../Scripts/angular.js"></script>
+    <script src="../Scripts/ui-grid.js"></script>
+    <link href="../Content/ui-grid.css" rel="stylesheet" />
+    <style>
+        .myGrid{width:500px;height:250px;}
+    </style>
+    <script>
+        function myController($scope) {
+            $scope.myData = [{ "firstName": "Cox", "abc": "efg" },
+            { "firstName": "Cox", "abc": "efg" }];
+        }
+        var app = angular.module('app', ['ui.grid']);
+        app.controller("myController", myController);
+    </script>
+</head>
+<body ng-app="app">
+    <div ng-controller="myController">
+        <div ui-grid="{data:myData}" class="myGrid"></div>
+    </div>
+</body>
+</html>
