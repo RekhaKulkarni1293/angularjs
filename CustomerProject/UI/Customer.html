@@ -36,6 +36,9 @@
             <td>{{Cust.CustomerCode}}</td>
         </tr>
     </table>
+    <ul>
+        <li ng-repeat="err in Errors">{{err.ErrorMessage}}</li>
+    </ul>
     {{Utility.MakeUpperCase(Model.CustomerCode)}}<br />
     {{Model.CustomerName}}</div>
 

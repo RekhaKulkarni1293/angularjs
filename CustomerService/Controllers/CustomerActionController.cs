@@ -5,6 +5,7 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using CustomerService.Models;
+using System.ComponentModel.DataAnnotations;
 
 namespace CustomerService.Controllers
 {
@@ -23,13 +24,23 @@ namespace CustomerService.Controllers
         }
 
         // POST: api/CustomerAction
-        public List<Customer> Post(List<Customer> cusomer)
+        public HttpResponseMessage Post(List<Customer> cusomer)
         {
             foreach (Customer cust in cusomer)
             {
-               cust.CustomerName= cust.CustomerName.ToUpper();
+                var context = new ValidationContext(cust, null, null);
+                var result = new List<ValidationResult>();
+                var isValid = Validator.TryValidateObject(cust, context, result, true);
+                if (result.Count == 0) 
+                { 
+                    cust.CustomerName = cust.CustomerName.ToUpper(); 
+                }
+                else 
+                { 
+                    return Request.CreateResponse(HttpStatusCode.InternalServerError,result); 
+                }
             }
-            return cusomer;
+            return Request.CreateResponse(HttpStatusCode.OK, cusomer);
         }
 
         // PUT: api/CustomerAction/5

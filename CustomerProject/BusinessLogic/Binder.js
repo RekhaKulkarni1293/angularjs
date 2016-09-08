@@ -12,8 +12,14 @@
         $scope.Model = _Factory.Create($scope.Type);
     }
     $scope.SaveToServer = function () {
-        $http.post("http://localhost:60398/api/CustomerAction/", $scope.Models).success(function (custs) {
-            $scope.Models = custs;
+        $http.post("http://localhost:60398/api/CustomerAction/", $scope.Models)
+            .success(function (custs) {
+                $scope.Models = custs;
+                $scope.Errors = [];
+                $scope.Model = _Factory.Create($scope.Type);
+            }).error(function(errs){
+                $scope.Errors=errs;
+           
         });
     }
     
