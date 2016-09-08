@@ -59,6 +59,8 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Scripts\angular-ui-router.js" />
+    <Content Include="Scripts\angular-ui-router.min.js" />
     <Content Include="Scripts\angular.min.js.map" />
     <Content Include="packages.config" />
     <None Include="Web.Debug.config">
@@ -77,6 +79,10 @@
     <Content Include="Scripts\angular.js" />
     <Content Include="Scripts\angular.min.js" />
     <Content Include="UI\Customer.html" />
+    <Content Include="UI\HtmlPage1.html" />
+    <Content Include="UI\HtmlPage2.html" />
+    <Content Include="UI\MasterPage.html" />
+    <Content Include="UI\Preview.html" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>

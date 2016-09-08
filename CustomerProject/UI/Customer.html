@@ -12,12 +12,37 @@
     <script>
         var App = angular.module("myApp", []);
         var controller = App.controller("Binder", Binder);
+        App.directive('companyFooter', function () {
+            return {
+                template: '@CopyRight questpond.com'
+              
+            };
+        });
+        App.directive('previewControl', function () {
+            return {
+                scope: {
+                    previewField: '@',
+                    editField1: '=',
+                    editField2: '=',
+                    anyMethod: '&'
+                },
+                templateUrl: 'Preview.html'
+            };
+        });
+       
         App.service("_Utility", Utility);
         App.factory("_Factory", FactoryCustomer);
     </script>
 </head>
 <body ng-app="myApp">
+    <company-footer>></company-footer>
 <div id="CustomerUI" ng-controller="Binder">
+  <preview-control
+      preview-field="{{Model.CustomerCode}}/{{Model.CustomerName}}"
+      edit-field1="Model.CustomerCode"
+                   edit-field2="Model.CustomerName"
+                   any-method="SomeMethod()">
+  </preview-control>
     Customer Code:- <input ng-model="Model.CustomerCode" type="text" name="name" value="hi" />
     Customer Name:- <input ng-model="Model.CustomerName" type="text" name="name" value="" /><br />
     Customer Type:-<select ng-model="Type">

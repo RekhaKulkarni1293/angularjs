@@ -11,6 +11,9 @@
         $scope.Models.push($scope.Model);
         $scope.Model = _Factory.Create($scope.Type);
     }
+    $scope.SomeMethod = function() {
+        alert("abc");
+    }
     $scope.SaveToServer = function () {
         $http.post("http://localhost:60398/api/CustomerAction/", $scope.Models)
             .success(function (custs) {

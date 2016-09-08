@@ -1,0 +1,29 @@
+﻿
+<script src="../Scripts/angular.js"></script>
+<script src="../Scripts/angular-ui-router.js"></script>
+<script>
+    var app = angular.module("myApp", ['ui.router']);
+    app.config(function($stateProvider,$urlRouterProvider){
+        $stateProvider
+            .state('Page1State',{
+                url:'/Page1',
+                templateUrl:'HtmlPage1.html'
+            })
+        .state('Page2State',{
+            url:'/Page2',
+            templateUrl:'HtmlPage2.html'})
+    });
+</script>
+
+
+<body ng-app="myApp">
+    This is the main page
+    <script>
+        alert("main Page");
+    </script>
+    <a href="#Page1">Page1.html</a>
+    <a ui-sref="Page2State">Page2.html</a>
+    <div>
+        <ui-view></ui-view>
+    </div>
+</body>
